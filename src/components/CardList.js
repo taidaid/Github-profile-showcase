@@ -3,7 +3,14 @@ import Card from "./Card";
 
 const CardList = props => {
   return (
-    <div>
+    <div
+      style={{
+        display: "flex",
+        height: "100%",
+        justifyContent: "center",
+        flexWrap: "wrap"
+      }}
+    >
       {props.cards.map((card, key) => (
         <Card key={key} handleRemove={props.handleRemove} {...card} />
       ))}

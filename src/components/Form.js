@@ -10,10 +10,13 @@ const Form = props => {
       .get(`https://api.github.com/users/${username}`)
       .then(resp => {
         props.onSubmit(resp.data);
-
         setUsername("");
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        alert("User Not Found");
+        console.log(err);
+        setUsername("");
+      });
   };
 
   return (
