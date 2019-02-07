@@ -6,14 +6,20 @@ import "./App.css";
 const App = () => {
   const [cards, setCards] = useState([]);
 
-  addNewCard = cardInfo => {
+  const addNewCard = cardInfo => {
     setCards(cards.concat(cardInfo));
   };
 
+  const removeCard = key => {
+    cards.filter(card => {
+      return !card.key === key;
+    });
+  };
+
   return (
-    <div>
+    <div className="App">
       <Form onSubmit={addNewCard} />
-      <CardList cards={cards} />
+      <CardList cards={cards} handleRemove={removeCard} />
     </div>
   );
 };
