@@ -5,7 +5,7 @@ const CardList = props => {
   return (
     <div>
       {props.cards.map((card, key) => (
-        <Card key={key} removeCard={props.handleRemove} {...card} />
+        <Card key={key} handleRemove={props.handleRemove} {...card} />
       ))}
     </div>
   );

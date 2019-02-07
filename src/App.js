@@ -11,9 +11,9 @@ const App = () => {
   };
 
   const removeCard = key => {
-    cards.filter(card => {
-      return !card.key === key;
-    });
+    const index = cards.findIndex(card => card.login === key);
+    if (index !== -1) cards.splice(index, 1);
+    setCards(cards);
   };
 
   return (

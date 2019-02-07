@@ -6,13 +6,16 @@ const Form = props => {
   const [username, setUsername] = useState("");
   const handleSubmit = e => {
     e.preventDefault();
-    axios.get(`https://api.github.com/users/${username}`).then(resp => {
-      props.onSubmit(resp.data);
+    axios
+      .get(`https://api.github.com/users/${username}`)
+      .then(resp => {
+        props.onSubmit(resp.data);
 
-      setUsername("");
-    });
-    // TODO
+        setUsername("");
+      })
+      .catch(err => console.log(err));
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <input
@@ -22,8 +25,7 @@ const Form = props => {
         placeholder="GitHub username"
         required
       />
-      <button type="submit">Add card</button>
-      <button type="button">Remove Card</button>
+      <button type="submit">Add Card</button>
     </form>
   );
 };

@@ -1,16 +1,16 @@
 import React from "react";
 
 const Card = props => {
-  const handleRemove = cardInfo => {
-    console.log(cardInfo);
-    props.removeCard(cardInfo);
+  const id = props.login;
+  const handleRemove = () => {
+    props.handleRemove(id);
   };
 
   return (
     <div style={{ margin: "1em" }}>
       <div>
         <img alt="avatar" style={{ width: "70px" }} src={props.avatar_url} />
-        <div onClick={props => handleRemove(props.key)}>X</div>
+        <div onClick={handleRemove}>X</div>
       </div>
 
       <div>
