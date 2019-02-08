@@ -4,8 +4,24 @@ import axios from "axios";
 const { useState } = React;
 const Form = props => {
   const [username, setUsername] = useState("");
+
+  const handleEntry = e => {
+    e.preventDefault();
+    setUsername(e.target.value);
+    axios
+      .get(`https://api.github.com/users/${username}`)
+      .then(resp => {
+        props.onEntry(resp.data);
+      })
+      .catch(err => {
+        // alert("User Not Found");
+        console.log(err);
+      });
+  };
+
   const handleSubmit = e => {
     e.preventDefault();
+    setUsername(e.target.value);
     axios
       .get(`https://api.github.com/users/${username}`)
       .then(resp => {
@@ -13,9 +29,8 @@ const Form = props => {
         setUsername("");
       })
       .catch(err => {
-        alert("User Not Found");
+        // alert("User Not Found");
         console.log(err);
-        setUsername("");
       });
   };
 
@@ -24,7 +39,7 @@ const Form = props => {
       <input
         type="text"
         value={username}
-        onChange={e => setUsername(e.target.value)}
+        onChange={e => handleEntry(e)}
         placeholder="GitHub username"
         required
       />
