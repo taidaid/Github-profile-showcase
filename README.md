@@ -1,4 +1,5 @@
-This project is a simple example of using the Github API to display some user information
+# Github-profile-showcase
+This project is an example of using the Github API and ES6 JavaScript to display a user's information in a card.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
